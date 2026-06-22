@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дина Нұрпейісова — Білім беру сайты</title>
+  <meta name="description" content="Дина Нұрпейісованың өмірі мен мұрасы туралы білім беру сайты." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F0E3;
+      --fg: #1E120A;
+      --card: #FFFFFF;
+      --primary: #2A4A1C;
+      --primary-light: #3A6025;
+      --secondary: #EDE5D2;
+      --muted: #D8CEBC;
+      --muted-fg: #6B4A30;
+      --accent: #B8860B;
+      --amber-50: #FFFBEB;
+      --amber-100: #FEF3C7;
+      --amber-200: #FDE68A;
+      --amber-300: #FCD34D;
+      --amber-400: #FBBF24;
+      --amber-500: #F59E0B;
+      --amber-600: #D97706;
+      --amber-700: #B45309;
+      --amber-800: #92400E;
+      --green-dark: #22401A;
+      --border: rgba(44,26,14,0.15);
+      --text-body: #4A2E18;
+      --text-muted: #6B4A30;
+      --text-subtle: #9A9070;
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'Jost', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.dark {
+      --bg: #1A0F08;
+      --fg: #F0E8D5;
+      --card: #241508;
+      --primary: #4A7A2C;
+      --primary-light: #5A8A35;
+      --secondary: #2D1D10;
+      --muted: #2D1D10;
+      --muted-fg: #A08060;
+      --border: rgba(240,232,213,0.12);
+      --text-body: #C8B090;
+      --text-muted: #A08060;
+      --text-subtle: #706050;
+    }
+
+    /* ── Typography ── */
+    .serif { font-family: var(--font-serif); }
+    h1, h2, h3 { font-family: var(--font-serif); }
+
+    /* ── Layout ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-sm { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-md { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── HEADER / NAV ── */
+    #site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    #site-header.scrolled {
+      background: rgba(247,240,227,0.96);
+      box-shadow: 0 1px 12px rgba(44,26,14,0.08);
+      backdrop-filter: blur(10px);
+    }
+    body.dark #site-header.scrolled { background: rgba(26,15,8,0.96); }
+
+    .gold-stripe {
+      height: 3px;
+      background: linear-gradient(to right, #8B6914, #D4A017, #2A4A1C);
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; gap: 1rem;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 600; font-size: 1rem;
+      color: #2A4A1C; letter-spacing: 0.03em; text-decoration: none;
+      white-space: nowrap;
+    }
+    body.dark .nav-brand { color: #8FBF6A; }
+
+    .nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+    .nav-links a {
+      display: block; padding: 0.375rem 0.75rem;
+      font-size: 0.875rem; color: #3D2010; text-decoration: none;
+      border-radius: 4px; transition: color 0.2s; position: relative;
+    }
+    body.dark .nav-links a { color: #C8B090; }
+    .nav-links a:hover, .nav-links a.active { color: #2A4A1C; font-weight: 600; }
+    body.dark .nav-links a:hover, body.dark .nav-links a.active { color: #8FBF6A; }
+    .nav-links a.active::after {
+      content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem;
+      height: 2px; background: var(--amber-600); border-radius: 2px;
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .btn-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(139,105,20,0.3);
+      background: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: #92400E; transition: background 0.2s; font-size: 1rem;
+    }
+    body.dark .btn-icon { color: #FCD34D; }
+    .btn-icon:hover { background: rgba(251,191,36,0.15); }
+
+    .btn-menu { display: none; }
+    @media (max-width: 1023px) {
+      .nav-links { display: none; }
+      .btn-menu { display: flex; }
+    }
+
+    /* Mobile drawer */
+    #mobile-nav {
+      display: none; background: var(--bg);
+      border-top: 1px solid rgba(139,105,20,0.15);
+      padding: 0 1.25rem 1.25rem;
+    }
+    #mobile-nav.open { display: block; }
+    #mobile-nav a {
+      display: block; padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(139,105,20,0.1);
+      font-size: 0.875rem; color: #3D2010; text-decoration: none; transition: color 0.2s;
+    }
+    body.dark #mobile-nav a { color: #C8B090; }
+    #mobile-nav a.active { color: #2A4A1C; font-weight: 600; }
+    body.dark #mobile-nav a.active { color: #8FBF6A; }
+
+    /* ── ORNAMENT ── */
+    .ornament-row {
+      display: flex; align-items: center; gap: 0.5rem; margin: 1.5rem 0;
+    }
+    .ornament-row .line {
+      flex: 1; height: 1px; background: rgba(184,134,11,0.25);
+    }
+    .section-tag {
+      display: inline-block; font-family: monospace;
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.22em;
+      color: var(--amber-700); margin-bottom: 0.25rem;
+    }
+    body.dark .section-tag { color: var(--amber-500); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; background: #2A4A1C; color: #FDE68A;
+      border: none; border-radius: 4px; font-weight: 600; cursor: pointer;
+      font-size: 0.9rem; transition: background 0.2s; text-decoration: none;
+      font-family: var(--font-sans);
+    }
+    .btn-primary:hover { background: #3A6025; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; border: 1px solid rgba(180,83,9,0.6);
+      color: #92400E; background: none; border-radius: 4px; font-weight: 600;
+      cursor: pointer; font-size: 0.9rem; transition: background 0.2s; text-decoration: none;
+      font-family: var(--font-sans);
+    }
+    body.dark .btn-outline { color: #FCD34D; }
+    .btn-outline:hover { background: rgba(251,191,36,0.15); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      overflow: hidden; background: var(--bg);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; opacity: 0.15;
+      background-image: url('https://images.unsplash.com/photo-1764521970660-fc4d6e493425?w=1920&h=1080&fit=crop&auto=format');
+      background-size: cover; background-position: center;
+    }
+    body.dark .hero-bg { opacity: 0.10; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, #F7F0E3, rgba(247,240,227,0.85), rgba(247,240,227,0.4));
+    }
+    body.dark .hero-overlay {
+      background: linear-gradient(to right, #1A0F08, rgba(26,15,8,0.85), rgba(26,15,8,0.4));
+    }
+    .hero-content {
+      position: relative; width: 100%;
+      padding-top: 7rem; padding-bottom: 5rem;
+      display: grid; grid-template-columns: 3fr 2fr; gap: 3rem; align-items: center;
+    }
+    @media (max-width: 1023px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-portrait { display: none; }
+    }
+
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.08; color: #1E120A; margin-top: 0.75rem; }
+    body.dark .hero-title { color: #F0E8D5; }
+    .hero-title span { color: #2A4A1C; }
+    body.dark .hero-title span { color: #7AB050; }
+    .hero-subtitle { font-family: var(--font-serif); font-size: 1.25rem; color: #92400E; font-style: italic; margin-top: 1.25rem; }
+    body.dark .hero-subtitle { color: var(--amber-500); }
+    .hero-desc { color: var(--text-body); line-height: 1.7; max-width: 30rem; font-size: 0.97rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+    /* Portrait */
+    .portrait-wrap { position: relative; display: flex; justify-content: flex-end; }
+    .portrait-inner {
+      position: relative; width: 17rem; height: 26rem;
+      border-radius: 4px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      background: rgba(251,191,36,0.2);
+    }
+    .portrait-inner img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.4) brightness(0.9); }
+    .portrait-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem;
+      background: linear-gradient(to top, rgba(26,15,8,0.6), transparent);
+    }
+    .portrait-caption p { font-family: var(--font-serif); color: #FDE68A; font-size: 0.875rem; font-style: italic; text-align: center; }
+    .corner-accent-tl, .corner-accent-tr, .corner-accent-bl, .corner-accent-br {
+      position: absolute; width: 20px; height: 20px; border-color: rgba(180,83,9,0.7);
+    }
+    .corner-accent-tl { top: -4px; left: -4px; border-top: 2px solid; border-left: 2px solid; }
+    .corner-accent-tr { top: -4px; right: -4px; border-top: 2px solid; border-right: 2px solid; }
+    .corner-accent-bl { bottom: -4px; left: -4px; border-bottom: 2px solid; border-left: 2px solid; }
+    .corner-accent-br { bottom: -4px; right: -4px; border-bottom: 2px solid; border-right: 2px solid; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: #22401A; padding: 2.5rem 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    @media (max-width: 767px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-item { text-align: center; padding: 0 1rem; border-right: 1px solid rgba(180,83,9,0.3); }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: #FCD34D; }
+    .stat-label { color: #90B070; font-size: 0.7rem; margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── SECTION: CARDS ── */
+    .section { padding: 5rem 0; }
+    .section-alt { background: #EDE5D2; }
+    body.dark .section-alt { background: #1F1209; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); color: #1E120A; margin-top: 0.5rem; }
+    body.dark .section-title { color: #F0E8D5; }
+    .section-desc { color: var(--text-body); max-width: 38rem; margin: 0 auto; line-height: 1.7; font-size: 0.9rem; }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 767px) { .cards-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 768px) and (max-width: 1023px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .card {
+      background: var(--card); border: 1px solid rgba(139,105,20,0.12);
+      border-radius: 4px; padding: 1.5rem; cursor: pointer;
+      transition: border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden;
+      text-align: left;
+    }
+    .card:hover { border-color: rgba(180,83,9,0.4); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, rgba(180,83,9,0.5), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      width: 40px; height: 40px; background: rgba(42,74,28,0.1);
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; font-size: 1.1rem; transition: background 0.2s;
+    }
+    body.dark .card-icon { background: rgba(42,74,28,0.25); }
+    .card:hover .card-icon { background: rgba(42,74,28,0.2); }
+    .card h3 { font-family: var(--font-serif); font-size: 1.1rem; color: #1E120A; margin-bottom: 0.5rem; }
+    body.dark .card h3 { color: #F0E8D5; }
+    .card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+    .card-link { display: flex; align-items: center; gap: 0.25rem; margin-top: 1rem; font-size: 0.875rem; font-weight: 600; color: #92400E; }
+    body.dark .card-link { color: var(--amber-500); }
+
+    /* ── FEATURE SECTION (2-col) ── */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    @media (max-width: 767px) { .feature-grid { grid-template-columns: 1fr; } }
+    .feature-img { border-radius: 4px; overflow: hidden; background: rgba(251,191,36,0.2); height: 18rem; }
+    .feature-img img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.3); }
+    .feature-text h2 { font-size: 1.75rem; color: #1E120A; margin: 0.5rem 0 1rem; }
+    body.dark .feature-text h2 { color: #F0E8D5; }
+    .feature-text p { font-size: 0.9rem; color: var(--text-body); line-height: 1.7; margin-bottom: 0.75rem; }
+    .text-link { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.875rem; font-weight: 600; color: #2A4A1C; cursor: pointer; background: none; border: none; }
+    body.dark .text-link { color: #8FBF6A; }
+
+    /* ── PAGE WRAPPER ── */
+    .page { display: none; min-height: 100vh; background: var(--bg); padding-top: 6rem; padding-bottom: 6rem; }
+    .page.active { display: block; }
+    #page-home { padding: 0; }
+    #page-home.active { display: block; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+      background: rgba(180,83,9,0.2);
+    }
+    @media (min-width: 768px) { .timeline::before { left: 50%; transform: translateX(-50%); } }
+
+    .timeline-item { position: relative; display: flex; gap: 1.5rem; margin-bottom: 3.5rem; }
+    @media (min-width: 768px) {
+      .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    }
+    .timeline-dot {
+      position: absolute; left: 20px; top: 1rem; z-index: 2;
+      width: 28px; height: 28px; background: #22401A; border: 2px solid #F59E0B;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transform: translateX(-50%);
+    }
+    @media (min-width: 768px) { .timeline-dot { left: 50%; } }
+
+    .timeline-card {
+      margin-left: 3.5rem; width: 100%; background: var(--card);
+      border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: box-shadow 0.2s;
+    }
+    .timeline-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); }
+    @media (min-width: 768px) {
+      .timeline-card { margin-left: 0; width: 46%; }
+      .timeline-item:nth-child(odd) .timeline-card { margin-right: auto; padding-right: 2rem; }
+      .timeline-item:nth-child(even) .timeline-card { margin-left: auto; padding-left: 2rem; }
+    }
+    .timeline-img { height: 9rem; overflow: hidden; background: rgba(251,191,36,0.15); }
+    .timeline-img img { width: 100%; height: 100%; object-fit: cover; }
+    .timeline-body { padding: 1.25rem; }
+    .timeline-year {
+      display: inline-block; font-family: monospace; font-size: 0.75rem;
+      color: var(--amber-700); background: rgba(251,191,36,0.12);
+      padding: 0.125rem 0.5rem; border-radius: 3px; margin-bottom: 0.5rem;
+    }
+    body.dark .timeline-year { color: var(--amber-500); }
+    .timeline-body h3 { font-family: var(--font-serif); font-size: 1.1rem; color: #1E120A; margin-bottom: 0.5rem; }
+    body.dark .timeline-body h3 { color: #F0E8D5; }
+    .timeline-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── KUIS GRID ── */
+    .kuis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 767px) { .kuis-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 768px) and (max-width: 1023px) { .kuis-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .kui-card {
+      background: var(--card); border: 1px solid rgba(139,105,20,0.12);
+      border-radius: 4px; overflow: hidden; display: flex; flex-direction: column;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .kui-card:hover { border-color: rgba(180,83,9,0.35); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .kui-header { background: #22401A; padding: 1.25rem; position: relative; overflow: hidden; }
+    .kui-header h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: #FCD34D; position: relative; z-index: 1; }
+    .kui-header .latin { color: #8FBF6A; font-size: 0.75rem; font-style: italic; margin-top: 0.25rem; position: relative; z-index: 1; }
+    .kui-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .kui-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tag { font-size: 0.7rem; padding: 0.125rem 0.5rem; border-radius: 3px; }
+    .tag-mood { background: rgba(251,191,36,0.15); color: #92400E; }
+    body.dark .tag-mood { background: rgba(251,191,36,0.1); color: #FCD34D; }
+    .tag-dur { background: rgba(42,74,28,0.12); color: #2A4A1C; }
+    body.dark .tag-dur { background: rgba(42,74,28,0.2); color: #8FBF6A; }
+    .kui-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .kui-toggle {
+      margin-top: 1rem; background: none; border: none; cursor: pointer;
+      font-size: 0.875rem; font-weight: 600; color: #2A4A1C; display: flex; align-items: center; gap: 0.25rem;
+      font-family: var(--font-sans);
+    }
+    body.dark .kui-toggle { color: #8FBF6A; }
+    .kui-extra {
+      display: none; margin-top: 0.75rem; padding-top: 0.75rem;
+      border-top: 1px solid rgba(139,105,20,0.15);
+      font-size: 0.75rem; color: #6B4A30; line-height: 1.6;
+    }
+    body.dark .kui-extra { color: #906840; }
+    .kui-extra.open { display: block; }
+
+    /* ── CONTRIBUTION ── */
+    .quote-block {
+      background: #22401A; border-radius: 4px; padding: 3rem; margin-bottom: 3.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .quote-block::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, #F59E0B, transparent);
+    }
+    .quote-mark { font-family: var(--font-serif); font-size: 4rem; color: #F59E0B; line-height: 1; }
+    .quote-block blockquote {
+      font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: #FEF3C7; font-style: italic; line-height: 1.6; max-width: 38rem; margin: 0 auto 1.5rem;
+    }
+    .quote-attr { color: #F59E0B; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; }
+
+    .pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
+    @media (max-width: 767px) { .pillars-grid { grid-template-columns: 1fr; } }
+    .pillar { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .pillar:hover { border-color: rgba(180,83,9,0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .pillar-emoji { font-size: 2rem; margin-bottom: 0.75rem; }
+    .pillar h3 { font-family: var(--font-serif); font-size: 1.1rem; color: #1E120A; margin-bottom: 0.5rem; }
+    body.dark .pillar h3 { color: #F0E8D5; }
+    .pillar p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+    .legacy-nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    @media (max-width: 767px) { .legacy-nums { grid-template-columns: repeat(2, 1fr); } }
+    .legacy-num { background: rgba(251,191,36,0.07); border: 1px solid rgba(180,83,9,0.15); border-radius: 4px; padding: 1rem; text-align: center; }
+    .legacy-num .num { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: #2A4A1C; }
+    body.dark .legacy-num .num { color: #8FBF6A; }
+    .legacy-num .lbl { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* ── GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    @media (max-width: 767px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 768px) and (max-width: 1023px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .gallery-item {
+      aspect-ratio: 1; overflow: hidden; border-radius: 4px; cursor: pointer;
+      position: relative; background: rgba(251,191,36,0.15);
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,15,8,0.7), transparent);
+      opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 0.75rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { color: #FDE68A; font-size: 0.75rem; font-weight: 500; }
+    .gallery-border {
+      position: absolute; inset: 0; border: 2px solid transparent; border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+    .gallery-item:hover .gallery-border { border-color: rgba(251,191,36,0.4); }
+
+    /* Modal */
+    #modal {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 1rem;
+    }
+    #modal.open { display: flex; }
+    .modal-inner {
+      max-width: 50rem; width: 100%; background: #1A0F08; border-radius: 4px; overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.5); position: relative;
+    }
+    .modal-inner img { width: 100%; display: block; }
+    .modal-caption { padding: 1rem; border-top: 1px solid rgba(180,83,9,0.3); }
+    .modal-caption p { font-family: var(--font-serif); color: #FCD34D; font-size: 1rem; }
+    .modal-caption small { color: #A08060; font-size: 0.75rem; display: block; margin-top: 0.25rem; }
+    .modal-close {
+      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 10;
+      width: 2rem; height: 2rem; background: rgba(0,0,0,0.6); color: white;
+      border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; line-height: 1;
+    }
+    .modal-close:hover { background: rgba(0,0,0,0.85); }
+
+    /* ── CONTACT ── */
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 600; color: #2A4A1C; margin-bottom: 0.4rem; }
+    body.dark .form-label { color: #7AB050; }
+    .form-input {
+      width: 100%; padding: 0.625rem 1rem; border: 1px solid rgba(139,105,20,0.2);
+      border-radius: 4px; background: rgba(251,191,36,0.06); color: #1E120A;
+      font-size: 0.875rem; font-family: var(--font-sans);
+      transition: border-color 0.2s; outline: none;
+    }
+    body.dark .form-input { background: #1A0F08; color: #F0E8D5; border-color: rgba(240,232,213,0.12); }
+    .form-input:focus { border-color: var(--amber-600); box-shadow: 0 0 0 3px rgba(217,119,6,0.15); }
+    .form-input.error { border-color: #f87171; }
+    .form-input::placeholder { color: #A08060; }
+    textarea.form-input { resize: none; }
+    .form-error { color: #ef4444; font-size: 0.75rem; margin-top: 0.25rem; }
+    .btn-submit {
+      width: 100%; padding: 0.75rem; background: #2A4A1C; color: #FDE68A;
+      border: none; border-radius: 4px; font-weight: 600; cursor: pointer;
+      font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: background 0.2s; font-family: var(--font-sans);
+    }
+    .btn-submit:hover { background: #3A6025; }
+    .contact-info {
+      margin-top: 2.5rem; background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.5rem;
+    }
+    .contact-info h3 { font-family: var(--font-serif); font-size: 1rem; color: #1E120A; margin-bottom: 0.75rem; }
+    body.dark .contact-info h3 { color: #F0E8D5; }
+    .contact-row { display: flex; gap: 0.5rem; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .contact-row span:first-child { color: var(--amber-700); }
+    body.dark .contact-row span:first-child { color: var(--amber-500); }
+    .success-box {
+      background: #22401A; border-radius: 4px; padding: 2.5rem;
+      text-align: center;
+    }
+    .success-box h3 { font-family: var(--font-serif); font-size: 1.5rem; color: #FCD34D; margin: 1rem 0 0.5rem; }
+    .success-box p { color: #90B870; font-size: 0.875rem; }
+    .btn-reset {
+      margin-top: 1.5rem; padding: 0.5rem 1.5rem; border: 1px solid rgba(245,158,11,0.6);
+      color: #FCD34D; background: none; border-radius: 4px; cursor: pointer; font-size: 0.875rem;
+      transition: background 0.2s; font-family: var(--font-sans);
+    }
+    .btn-reset:hover { background: rgba(245,158,11,0.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #22401A; color: #C8B890;
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; padding: 3rem 0; }
+    @media (max-width: 767px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 1rem; color: #FCD34D; margin-bottom: 0.75rem; }
+    .footer-brand p { font-size: 0.875rem; color: #9A9070; line-height: 1.6; }
+    .footer-nav h4, .footer-info h4 {
+      color: #FCD34D; font-weight: 600; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem;
+    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav ul li { margin-bottom: 0.5rem; }
+    .footer-nav ul li a {
+      font-size: 0.875rem; color: #9A9070; cursor: pointer; background: none; border: none;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-nav ul li a:hover { color: #FCD34D; }
+    .footer-info p { font-size: 0.875rem; color: #9A9070; margin-bottom: 0.375rem; }
+    .footer-gh { display: flex; align-items: center; gap: 0.375rem; color: #FCD34D; font-size: 0.875rem; text-decoration: none; margin-top: 0.75rem; }
+    .footer-gh:hover { color: #FEF3C7; }
+    .footer-bottom { text-align: center; font-size: 0.75rem; color: #706050; padding-bottom: 1.5rem; }
+
+    /* ── BACK TO TOP ── */
+    #back-top {
+      position: fixed; bottom: 2rem; right: 1.5rem; z-index: 50;
+      width: 40px; height: 40px; background: #2A4A1C; color: #FCD34D;
+      border: none; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 1rem;
+      opacity: 0; transform: translateY(1rem); transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    #back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #back-top:hover { background: #3A6025; }
+
+    /* ── Utility ── */
+    .text-amber { color: var(--amber-700); }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .gap-2 { gap: 0.5rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="gold-stripe"></div>
+  <div class="container">
+    <nav>
+      <a href="#" class="nav-brand" data-page="home">
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
+          <path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/>
+          <path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/>
+          <path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/>
+        </svg>
+        Дина Нұрпейісова
+      </a>
+      <ul class="nav-links">
+        <li><a href="#" data-page="home" class="active">Басты бет</a></li>
+        <li><a href="#" data-page="about">Өмірбаяны</a></li>
+        <li><a href="#" data-page="works">Күйлері</a></li>
+        <li><a href="#" data-page="contribution">Мұрасы</a></li>
+        <li><a href="#" data-page="gallery">Галерея</a></li>
+        <li><a href="#" data-page="contact">Байланыс</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="dark-toggle" title="Тема ауыстыру">🌙</button>
+        <button class="btn-icon btn-menu" id="menu-toggle" title="Мәзір">☰</button>
+      </div>
+    </nav>
+    <div id="mobile-nav">
+      <a href="#" data-page="home" class="active">Басты бет</a>
+      <a href="#" data-page="about">Өмірбаяны</a>
+      <a href="#" data-page="works">Күйлері</a>
+      <a href="#" data-page="contribution">Мұрасы</a>
+      <a href="#" data-page="gallery">Галерея</a>
+      <a href="#" data-page="contact">Байланыс</a>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════ HOME PAGE ════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <span class="section-tag">Қазақ күй өнері · 1861–1955</span>
+          <h1 class="hero-title">Дина<br><span>Нұрпейісова</span></h1>
+          <p class="hero-subtitle">Қазақ күй өнерінің шебері</p>
+          <div class="ornament-row">
+            <div class="line"></div>
+            <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/></svg>
+            <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg>
+            <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/></svg>
+            <div class="line"></div>
+          </div>
+          <p class="hero-desc">Батыс Қазақстан күй мектебінің соңғы өкілі, домбыраның ұлы шебері. Оның дарыны мен өнері бүгінгі күнге дейін қазақ халқының мәдени мұрасының аса маңызды бөлігі болып табылады.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary" data-page="about">Толығырақ білу →</a>
+            <a href="#" class="btn-outline" data-page="works">Күйлері</a>
+          </div>
+        </div>
+        <div class="hero-portrait portrait-wrap">
+          <div style="position:relative">
+            <div class="corner-accent-tl"></div><div class="corner-accent-tr"></div>
+            <div class="corner-accent-bl"></div><div class="corner-accent-br"></div>
+            <div class="portrait-inner">
+              <img src="https://images.unsplash.com/photo-1689591129676-e7782380b8aa?w=580&h=780&fit=crop&auto=format" alt="Қазақ даласы" />
+              <div class="portrait-caption"><p>Қазақ даласы — оның Отаны</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-value">1861–1955</div><div class="stat-label">Өмір жылдары</div></div>
+        <div class="stat-item"><div class="stat-value">50+</div><div class="stat-label">Авторлық күйлер</div></div>
+        <div class="stat-item"><div class="stat-value">Батыс Қазақстан</div><div class="stat-label">Күй мектебі</div></div>
+        <div class="stat-item"><div class="stat-value">Халық артисі</div><div class="stat-label">Мемлекеттік атақ</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="section">
+    <div class="container-md">
+      <div class="section-header">
+        <span class="section-tag">Зерттеу</span>
+        <h2 class="section-title">Мұра бөлімдері</h2>
+        <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+      </div>
+      <div class="cards-grid">
+        <div class="card" data-page="about">
+          <div class="card-icon">📖</div>
+          <h3>Өмірбаяны</h3>
+          <p>Дина Нұрпейісованың тарихи өмір жолы, балалық шағы және домбыра өнеріне деген жолы.</p>
+          <div class="card-link">Оқу →</div>
+        </div>
+        <div class="card" data-page="works">
+          <div class="card-icon">🎵</div>
+          <h3>Күйлері</h3>
+          <p>Оның атақты туындылары: Асем Қоңыр, Бұлбұл, Байжұма және тағы басқалары.</p>
+          <div class="card-link">Оқу →</div>
+        </div>
+        <div class="card" data-page="contribution">
+          <div class="card-icon">🏆</div>
+          <h3>Мұрасы</h3>
+          <p>Қазақ музыкасына қосқан орасан зор үлесі мен мәдени маңызы.</p>
+          <div class="card-link">Оқу →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE -->
+  <section class="section section-alt">
+    <div class="container-md">
+      <div class="feature-grid">
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1619265180726-6c11823ebf6a?w=800&h=600&fit=crop&auto=format" alt="Қазақ жылқылары" />
+        </div>
+        <div class="feature-text">
+          <span class="section-tag">Домбыра шебері</span>
+          <h2>Алғашқы әйел күйші</h2>
+          <p>Дина Нұрпейісова — қазақ тарихындағы алғашқы кәсіби әйел күйші. Ол ер адамдар үстемдік еткен дәстүрлі орта шеңберінде өзінің орнын тауып, үлкен мойындауға жетті.</p>
+          <p>Ұлы Қурмангазының шәкірті болған ол батыс қазақ күй мектебінің барлық қыр-сырын меңгерді және оны ғасырлар бойы келешек ұрпаққа жеткізді.</p>
+          <button class="text-link" data-page="contribution">Мұрасы туралы оқу →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════ BIOGRAPHY PAGE ════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="container-md">
+    <div class="section-header">
+      <span class="section-tag">Өмір жолы</span>
+      <h1 class="section-title">Өмірбаяны</h1>
+      <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+      <p class="section-desc">Дина Нұрпейісованың өмірі — қазақ музыкасының тарихымен бірге өрілген ұлы жол. 94 жыл өмір сүрген ол сол кезде де, бүгінгі күнде де ұлт рухының символы.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════ WORKS PAGE ════════════════════════ -->
+<div id="page-works" class="page">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Шығармашылық</span>
+      <h1 class="section-title">Күйлері</h1>
+      <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+      <p class="section-desc">Дина Нұрпейісова 50-ден астам күй шығарған. Мына туындылар оның шығармашылық мұрасының ең жарқын үлгілері болып саналады.</p>
+    </div>
+    <div class="kuis-grid" id="kuis-grid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════ CONTRIBUTION PAGE ════════════════════════ -->
+<div id="page-contribution" class="page">
+  <div class="container-md">
+    <div class="section-header">
+      <span class="section-tag">Маңызы мен мұрасы</span>
+      <h1 class="section-title">Қазақ музыкасына үлесі</h1>
+      <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-mark">&ldquo;</div>
+      <blockquote>Домбыра — халқымның жаны, күй — оның тілі. Мен сол тілде сөйлеймін.</blockquote>
+      <div class="quote-attr">— Дина Нұрпейісова</div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar"><div class="pillar-emoji">♀</div><h3>Тарихи маңызы</h3><p>Дина Нұрпейісова — қазақ тарихындағы алғашқы кәсіби әйел күйші. Ол ер адамдар үстемдік еткен дәстүрлі орта шеңберінде өзінің орнын тауып, үлкен мойындауға жетті. Бұл — қазақ мәдениетіндегі теңдесі жоқ жетістік.</p></div>
+      <div class="pillar"><div class="pillar-emoji">🎵</div><h3>Мәдени мұрасы</h3><p>Батыс Қазақстан күй мектебін сақтаушы және дамытушы ретінде ол осы бай дәстүрді келешек ұрпаққа жеткізді. Оның туындылары бүгінгі күні де домбырашылардың репертуарынан орын алады.</p></div>
+      <div class="pillar"><div class="pillar-emoji">📚</div><h3>Педагогикалық еңбегі</h3><p>Дина Нұрпейісова өз шеберлігін тек орындаушылықпен ғана шектемей, жас музыканттарды оқытумен де айналысты. Оның шәкірттері бүгінгі қазақ күй мектебінің іргесін қалады.</p></div>
+      <div class="pillar"><div class="pillar-emoji">🏛</div><h3>Мемлекеттік мойындау</h3><p>1936 жылы Қазақ ССР Халық артисі атағы берілді. Оның есімі қазақ музыкасы тарихының алтын қорына кіреді. Атырауда мәдени объектілер оның есімімен аталады.</p></div>
+    </div>
+    <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+    <div class="legacy-nums">
+      <div class="legacy-num"><div class="num">50+</div><div class="lbl">Авторлық күй</div></div>
+      <div class="legacy-num"><div class="num">1936</div><div class="lbl">Халық артисі</div></div>
+      <div class="legacy-num"><div class="num">94</div><div class="lbl">Жас, өмір ұзақтығы</div></div>
+      <div class="legacy-num"><div class="num">№1</div><div class="lbl">Алғашқы әйел күйші</div></div>
+    </div>
+    <div style="margin-top:3.5rem" class="feature-grid">
+      <div class="feature-text">
+        <span class="section-tag">Артистік мұра</span>
+        <h2>Домбыра өнерін сақтаушы</h2>
+        <p>Дина Нұрпейісова — тек музыкант қана емес, сонымен бірге мәдени мұраны сақтаушы. Ол Қурмангазыдан үйренгенін ғана орындамай, батыс мектептің стилін өзіндік ерекше мөрімен байытты.</p>
+        <p>Оның орындаушылық мектебі бүгінгі күні де қазақ музыка білімінің негізін қалайды. Консерватория бағдарламаларында оның туындылары міндетті репертуар болып енгізілген.</p>
+      </div>
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1752418720202-3e4dfc7f4e3e?w=700&h=450&fit=crop&auto=format" alt="Қазақ даласы" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════ GALLERY PAGE ════════════════════════ -->
+<div id="page-gallery" class="page">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Сурет галереясы</span>
+      <h1 class="section-title">Галерея</h1>
+      <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+      <p class="section-desc">Қазақ даласының суреттері — Дина Нұрпейісованың рухымен сусындаған жер.</p>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════ CONTACT PAGE ════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="container-sm" style="max-width:38rem">
+    <div class="section-header">
+      <span class="section-tag">Хабарласу</span>
+      <h1 class="section-title">Байланыс</h1>
+      <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+      <p class="section-desc">Жоба туралы сұрақтарыңыз болса, бізге хабарласыңыз.</p>
+    </div>
+    <div id="contact-form-wrap">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label class="form-label">Аты-жөні</label>
+          <input type="text" class="form-input" id="f-name" placeholder="Сіздің толық атыңыз" />
+          <div class="form-error" id="err-name"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="f-email" placeholder="email@example.com" />
+          <div class="form-error" id="err-email"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Хабарлама</label>
+          <textarea class="form-input" id="f-message" rows="5" placeholder="Хабарламаңызды жазыңыз..."></textarea>
+          <div class="form-error" id="err-message"></div>
+        </div>
+        <button type="submit" class="btn-submit">✉ Жіберу</button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h3>Жоба ақпараты</h3>
+      <div class="contact-row"><span>Автор:</span><span>[Атыңызды жазыңыз]</span></div>
+      <div class="contact-row"><span>Жыл:</span><span>2025</span></div>
+      <div class="contact-row"><span>Тақырып:</span><span>Дина Нұрпейісованың мұрасы</span></div>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-gh">⬡ GitHub репозиторий</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="height:3px;background:linear-gradient(to right,#92400E,#F59E0B,#92400E)"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Дина Нұрпейісова</h3>
+        <p>Қазақ күй өнерінің ұлы шебері. Батыс Қазақстан күй мектебінің соңғы өкілі. 1861–1955 жж.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Беттер</h4>
+        <ul>
+          <li><a href="#" data-page="home">Басты бет</a></li>
+          <li><a href="#" data-page="about">Өмірбаяны</a></li>
+          <li><a href="#" data-page="works">Күйлері</a></li>
+          <li><a href="#" data-page="contribution">Мұрасы</a></li>
+          <li><a href="#" data-page="gallery">Галерея</a></li>
+          <li><a href="#" data-page="contact">Байланыс</a></li>
+        </ul>
+      </div>
+      <div class="footer-info">
+        <h4>Жоба туралы</h4>
+        <p>Студенттік академиялық жоба</p>
+        <p>Орындаған: [Авторыңыздың аты]</p>
+        <p>Жыл: 2025</p>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-gh">⬡ GitHub репозиторий</a>
+      </div>
+    </div>
+    <div class="ornament-row"><div class="line"></div><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg><div class="line"></div></div>
+    <p class="footer-bottom">© 2025 · Барлық құқықтар қорғалған · Дина Нұрпейісованың мұрасына арналған</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-inner" id="modal-inner">
+    <button class="modal-close" id="modal-close">✕</button>
+    <img id="modal-img" src="" alt="" />
+    <div class="modal-caption">
+      <p id="modal-caption"></p>
+      <small id="modal-alt"></small>
+    </div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" title="Жоғарыға">↑</button>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+
+const TIMELINE = [
+  { year: "1861", title: "Туылуы", body: "Бөкей ордасында, қазіргі Батыс Қазақстан облысы жерінде дүниеге келді. Нағыз аты — Үрдіхана болды, ал «Дина» деген атақ кейіннен берілді.", img: "1764521970660-fc4d6e493425" },
+  { year: "1870–80", title: "Балалық шағы мен алғашқы қадамдар", body: "Жас кезінен домбыраға деген қызығушылық таныта бастады. Тума дарыны айналасындағылардың назарын аудартты. Сол кездің өзінде-ақ оның орындаушылық дарыны ерекше сипатқа ие болды.", img: "1637842729600-d256c8960194" },
+  { year: "1880–90", title: "Қурмангазы шәкірті", body: "Қазақтың ұлы күйшісі Қурмангазы Сағырбайұлының шәкірті болды. Оның мектебінде шеберлігін шыңдады, батыс қазақ күй дәстүрін терең меңгерді.", img: "1752418720202-3e4dfc7f4e3e" },
+  { year: "1900–1920", title: "Танымалдылықтың шыңы", body: "Өз күйлерін шығара бастады. Даңқы бүкіл Қазақстанға тарады, үлкен жиындарда орындады. Ел аузында «домбыраның Ханшайымы» деген атаққа ие болды.", img: "1752419258219-a2e2d40d9841" },
+  { year: "1936", title: "Мемлекеттік мойындау", body: "Қазақ ССР Халық артисі атағын алды. Оның өнері мемлекет деңгейінде бағаланды. Алматыда үлкен юбилейлік концерттер ұйымдастырылды.", img: "1651515089125-e73c19f1dedf" },
+  { year: "1955", title: "Мәңгілік мұра", body: "94 жасында дүниеден өтті. Артында бай мұра — 50-ден астам күй қалдырды. Оның туындылары бүгінгі күнде де домбырашылардың репертуарынан орын алады.", img: "1651515098201-2aadf1b58e2a" },
+];
+
+const KUIS = [
+  { name: "Асем Қоңыр", latin: "Asem Qoñyr", mood: "Лирикалық", dur: "~5 мин", desc: "Нәзік, сезімтал күй. Табиғаттың сұлулығы мен адам жанының тазалығын бейнелейді. Дина репертуарының ең маңызды туындыларының бірі.", extra: "Бұл күй батыс мектептің лирикалық бағытын толық ашып көрсетеді. Домбыраның екі ішегі арасындағы тербелісті шебер пайдаланады." },
+  { name: "Бұлбұл", latin: "Bülbül", mood: "Жеңіл, сәнді", dur: "~4 мин", desc: "Бұлбұл құсының сайрауынан шабыт алып жазылған күй. Жеңіл, сылдырлаған үні мен ерекше мелодиясымен ерекшеленеді.", extra: "Орындауда жоғарғы регистрдің жиі пайдаланылуы — бұлбұл дауысын елестетеді. Техникалық шеберлікті қажет ететін туынды." },
+  { name: "Байжұма", latin: "Bayjuma", mood: "Мұңды, терең", dur: "~6 мин", desc: "Жеке адамға арналған лирикалық күй. Терең сезім мен мұңды сарын бұл туындыға ерекше сипат береді.", extra: "Байжұма — Диның жеке басынан шабыт алып жазылған туынды делінеді. Орта темпте, мұңды интонациясымен жүреді." },
+  { name: "16 жыл", latin: "16 Jyl", mood: "Сезімтал", dur: "~5 мин", desc: "Автордың өмірдің белгілі бір кезеңіне деген сезімін жеткізетін күй. Атауы 16 жылдық аңсауды білдіреді.", extra: "Күйдің атауы символдық мән береді. Орындаушылар арасында ерекше сүйіспеншілікке ие туынды." },
+  { name: "Жігер", latin: "Jiger", mood: "Батыл, жігерлі", dur: "~4 мин", desc: "Батылдық пен ерлікке шақыратын күй. Аты «жігер» сөзінен — ерік-жігерден алынған. Орындалуы техникалық жағынан күрделі.", extra: "Жылдам темп пен күшті штрихтар — Жігердің ерекшелігі. Домбырашылардың шеберлігін сынайтын репертуар." },
+  { name: "Наз Қоңыр", latin: "Naz Qoñyr", mood: "Нәзік, мінезді", dur: "~5 мин", desc: "Нәзіктік пен мінездің бейнесі. Орындаудың техникалық күрделілігімен және бай интонациялық мазмұнымен ерекшеленеді.", extra: "Асем Қоңырмен рухтас, бірақ мінездің күштілігі жағынан ерекшеленеді. Батыс мектептің асыл үлгісі." },
+];
+
+const GALLERY = [
+  { id: "1637842729600-d256c8960194", alt: "Дала жануарлары", caption: "Қазақ даласы" },
+  { id: "1764521970660-fc4d6e493425", alt: "Алтын сары дала", caption: "Алтын дала" },
+  { id: "1752419258219-a2e2d40d9841", alt: "Таулы пейзаж", caption: "Табиғат мұрасы" },
+  { id: "1752418720202-3e4dfc7f4e3e", alt: "Шексіз жазықтық", caption: "Шексіз кеңістік" },
+  { id: "1619265180726-6c11823ebf6a", alt: "Жылқылар далада", caption: "Еркіндіктің символы" },
+  { id: "1651515089125-e73c19f1dedf", alt: "Ауыл ғимараты", caption: "Туған жер" },
+  { id: "1651515098201-2aadf1b58e2a", alt: "Қазақ ауылы", caption: "Мекен" },
+  { id: "1689591129676-e7782380b8aa", alt: "Мал шаруашылығы", caption: "Дала тіршілігі" },
+];
+
+// ── BUILD TIMELINE ─────────────────────────────────────────────────
+const tlEl = document.getElementById('timeline');
+TIMELINE.forEach(({year,title,body,img}) => {
+  tlEl.innerHTML += `
+  <div class="timeline-item">
+    <div class="timeline-dot">
+      <svg width="10" height="10" viewBox="0 0 20 20" fill="none"><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.8"/></svg>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-img">
+        <img src="https://images.unsplash.com/photo-${img}?w=600&h=280&fit=crop&auto=format" alt="${title}" loading="lazy" />
+      </div>
+      <div class="timeline-body">
+        <span class="timeline-year">${year}</span>
+        <h3>${title}</h3>
+        <p>${body}</p>
+      </div>
+    </div>
+  </div>`;
+});
+
+// ── BUILD KUIS ─────────────────────────────────────────────────────
+const kuisEl = document.getElementById('kuis-grid');
+KUIS.forEach(({name,latin,mood,dur,desc,extra}) => {
+  const id = 'kui-' + name.replace(/\s/g,'');
+  kuisEl.innerHTML += `
+  <div class="kui-card">
+    <div class="kui-header">
+      <h3>${name}</h3>
+      <p class="latin">${latin}</p>
+    </div>
+    <div class="kui-body">
+      <div class="kui-tags">
+        <span class="tag tag-mood">${mood}</span>
+        <span class="tag tag-dur">${dur}</span>
+      </div>
+      <p>${desc}</p>
+      <button class="kui-toggle" onclick="toggleKui('${id}',this)">Толығырақ →</button>
+      <div class="kui-extra" id="${id}">${extra}</div>
+    </div>
+  </div>`;
+});
+
+function toggleKui(id, btn) {
+  const el = document.getElementById(id);
+  const open = el.classList.toggle('open');
+  btn.textContent = open ? 'Жабу ↑' : 'Толығырақ →';
+}
+
+// ── BUILD GALLERY ──────────────────────────────────────────────────
+const galleryEl = document.getElementById('gallery-grid');
+GALLERY.forEach(({id,alt,caption}) => {
+  const div = document.createElement('div');
+  div.className = 'gallery-item';
+  div.innerHTML = `
+    <img src="https://images.unsplash.com/photo-${id}?w=420&h=420&fit=crop&auto=format" alt="${alt}" loading="lazy" />
+    <div class="gallery-overlay"><span>${caption}</span></div>
+    <div class="gallery-border"></div>`;
+  div.addEventListener('click', () => openModal(id, alt, caption));
+  galleryEl.appendChild(div);
+});
+
+function openModal(id, alt, caption) {
+  document.getElementById('modal-img').src = `https://images.unsplash.com/photo-${id}?w=1000&h=650&fit=crop&auto=format`;
+  document.getElementById('modal-img').alt = alt;
+  document.getElementById('modal-caption').textContent = caption;
+  document.getElementById('modal-alt').textContent = alt;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── NAVIGATION ─────────────────────────────────────────────────────
+const pages = ['home','about','works','contribution','gallery','contact'];
+
+function navigate(target) {
+  pages.forEach(p => {
+    document.getElementById('page-'+p).classList.toggle('active', p === target);
+  });
+  // Update nav links
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === target);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+  // Close mobile nav
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('menu-toggle').textContent = '☰';
+}
+
+document.querySelectorAll('[data-page]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigate(this.dataset.page);
+  });
+});
+
+// ── DARK MODE ──────────────────────────────────────────────────────
+let dark = false;
+document.getElementById('dark-toggle').addEventListener('click', () => {
+  dark = !dark;
+  document.body.classList.toggle('dark', dark);
+  document.getElementById('dark-toggle').textContent = dark ? '☀' : '🌙';
+});
+
+// ── MOBILE MENU ────────────────────────────────────────────────────
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  const nav = document.getElementById('mobile-nav');
+  const open = nav.classList.toggle('open');
+  document.getElementById('menu-toggle').textContent = open ? '✕' : '☰';
+});
+
+// ── SCROLL EFFECTS ─────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.getElementById('site-header').classList.toggle('scrolled', y > 24);
+  document.getElementById('back-top').classList.toggle('show', y > 400);
+}, {passive: true});
+
+document.getElementById('back-top').addEventListener('click', () => {
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// ── CONTACT FORM ───────────────────────────────────────────────────
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg = document.getElementById('f-message').value.trim();
+  let ok = true;
+
+  ['name','email','message'].forEach(f => {
+    document.getElementById('err-'+f).textContent = '';
+    document.getElementById('f-'+f === 'f-message' ? 'f-message' : 'f-'+f).classList.remove('error');
+  });
+
+  if (!name) { document.getElementById('err-name').textContent='Атыңызды енгізіңіз'; document.getElementById('f-name').classList.add('error'); ok=false; }
+  if (!email || !email.includes('@')) { document.getElementById('err-email').textContent='Дұрыс email енгізіңіз'; document.getElementById('f-email').classList.add('error'); ok=false; }
+  if (!msg || msg.length < 10) { document.getElementById('err-message').textContent='Хабарлама тым қысқа'; document.getElementById('f-message').classList.add('error'); ok=false; }
+
+  if (ok) {
+    document.getElementById('contact-form-wrap').innerHTML = `
+      <div class="success-box">
+        <svg width="44" height="44" viewBox="0 0 20 20" fill="none"><path d="M10 1L19 10L10 19L1 10Z" stroke="#B8860B" stroke-width="1.2" fill="#B8860B" fill-opacity="0.12"/><path d="M10 5L15 10L10 15L5 10Z" fill="#B8860B" fill-opacity="0.45"/><path d="M10 8L12 10L10 12L8 10Z" fill="#B8860B" fill-opacity="0.8"/></svg>
+        <h3>Рақмет!</h3>
+        <p>Хабарламаңыз жіберілді. Жақын арада жауап береміз.</p>
+        <button class="btn-reset" onclick="resetForm()">Қайта жіберу</button>
+      </div>`;
+  }
+});
+
+function resetForm() {
+  document.getElementById('contact-form-wrap').innerHTML = `
+    <form class="contact-form" id="contact-form" novalidate onsubmit="return false">
+      <div class="form-group"><label class="form-label">Аты-жөні</label><input type="text" class="form-input" id="f-name" placeholder="Сіздің толық атыңыз"/><div class="form-error" id="err-name"></div></div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="f-email" placeholder="email@example.com"/><div class="form-error" id="err-email"></div></div>
+      <div class="form-group"><label class="form-label">Хабарлама</label><textarea class="form-input" id="f-message" rows="5" placeholder="Хабарламаңызды жазыңыз..."></textarea><div class="form-error" id="err-message"></div></div>
+      <button type="submit" class="btn-submit" onclick="submitForm(event)">✉ Жіберу</button>
+    </form>`;
+  // Re-attach submit
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const msg = document.getElementById('f-message').value.trim();
+    let ok = true;
+    if (!name) { document.getElementById('err-name').textContent='Атыңызды енгізіңіз'; document.getElementById('f-name').classList.add('error'); ok=false; }
+    if (!email||!email.includes('@')) { document.getElementById('err-email').textContent='Дұрыс email енгізіңіз'; document.getElementById('f-email').classList.add('error'); ok=false; }
+    if (!msg||msg.length<10) { document.getElementById('err-message').textContent='Хабарлама тым қысқа'; document.getElementById('f-message').classList.add('error'); ok=false; }
+    if (ok) resetForm.lastResult = true;
+  });
+}
+</script>
+</body>
+</html>
